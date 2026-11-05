@@ -21,3 +21,5 @@ Landing page for **Managed Dokan Marketplace**, built in the weLabs design syste
 ## Live
 
 https://welabs-managed-dokan.vercel.app
+
+Download the HTML: https://welabs-managed-dokan.vercel.app/download

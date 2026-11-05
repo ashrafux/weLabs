@@ -2,5 +2,17 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/managed-dokan", "destination": "/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/download", "destination": "/index" }
+  ],
+  "headers": [
+    {
+      "source": "/download",
+      "headers": [
+        { "key": "Content-Disposition", "value": "attachment; filename=\"managed-dokan-marketplace.html\"" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
   ]
 }
