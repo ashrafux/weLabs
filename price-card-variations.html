@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price Card — 5 Simplified Variations</title>
+<style>
+@font-face{font-family:'Manrope WL';font-weight:200 800;font-display:swap;src:url(https://welabs.dev/fonts/Manrope-variable-latin.woff2) format('woff2')}
+@font-face{font-family:'Geist WL';font-weight:100 900;font-display:swap;src:url(https://welabs.dev/fonts/Geist-variable-latin.woff2) format('woff2')}
+@font-face{font-family:'Plex WL';font-weight:500;font-display:swap;src:url(https://welabs.dev/fonts/IBMPlexMono-500-latin.woff2) format('woff2')}
+@font-face{font-family:'Plex WL';font-weight:600;font-display:swap;src:url(https://welabs.dev/fonts/IBMPlexMono-600-latin.woff2) format('woff2')}
+:root{--ink:#111B3A;--soft:#B9C3E3;--dim:#7E88AB;--line:rgba(255,255,255,.12);--green:oklch(0.78 0.15 152);--amber-bg:oklch(0.96 0.04 75);--amber:oklch(0.45 0.12 60)}
+*{box-sizing:border-box}
+body{margin:0;background:#FFFFFF;font-family:'Geist WL',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+.top{text-align:center;padding:72px 20px 16px}
+.top h1{margin:0;font-family:'Manrope WL',sans-serif;font-size:40px;letter-spacing:-.03em;font-weight:700}
+.top h1 span{display:block;font-weight:300;color:#3A4566}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px;padding:48px 32px 96px}
+.var{width:440px}
+.var .vh{margin-bottom:16px}
+.var .vh small{display:block;font-family:'Plex WL',monospace;font-size:13px;color:oklch(0.52 0.19 262)}
+.var .vh b{font-family:'Manrope WL',sans-serif;font-size:20px;letter-spacing:-.02em}
+.var .vh p{margin:4px 0 0;font-size:14px;color:#5E6680}
+.stage{background:#F4F4F6;border-radius:28px;padding:28px}
+.card{background:var(--ink);color:#FFFFFF;border-radius:24px;padding:36px 32px;display:flex;flex-direction:column;gap:18px}
+h3{margin:0;font-family:'Manrope WL',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.02em;color:#FFFFFF;white-space:nowrap}
+.badge{display:inline-block;width:max-content;padding:5px 11px;border-radius:999px;background:var(--amber-bg);color:var(--amber);font-family:'Plex WL',monospace;font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap;flex:none}
+.save{display:inline-block;padding:4px 10px;border-radius:999px;background:oklch(0.94 0.05 155);color:oklch(0.42 0.12 155);font-family:'Plex WL',monospace;font-size:12px;font-weight:600}
+.big{font-family:'Manrope WL',sans-serif;font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.unit{font-size:15px;font-weight:600;color:var(--soft)}
+.was{font-family:'Manrope WL',sans-serif;font-size:18px;font-weight:600;color:var(--dim);text-decoration:line-through}
+.muted{font-size:15px;line-height:1.5;color:var(--soft)}
+.small{font-size:13.5px;color:var(--soft)}
+.btn{display:flex;align-items:center;justify-content:center;height:54px;border-radius:12px;background:#FFFFFF;color:var(--ink);font-weight:600;font-size:16px;text-decoration:none}
+.btn.pill{border-radius:999px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:8px;vertical-align:1px}
+/* v2 */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:13.5px;color:var(--soft)}
+.chips b{color:#FFFFFF;font-weight:600}
+/* v3 */
+.swap{display:flex;align-items:center;gap:14px}
+.swap .arrow{color:var(--dim);font-size:22px}
+/* v4 */
+.split{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.split>div{padding:18px}
+.split>div+div{border-left:1px solid var(--line)}
+.split .k{font-family:'Plex WL',monospace;font-size:12px;color:var(--soft)}
+.split .v{margin-top:6px;font-family:'Manrope WL',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.03em}
+.split .v small{font-size:14px;font-weight:600;color:var(--soft);letter-spacing:0}
+/* v5 */
+.center{text-align:center;align-items:center}
+.slots{display:flex;gap:6px;justify-content:center}
+.slots i{width:22px;height:6px;border-radius:99px;background:rgba(255,255,255,.15)}
+.slots i.on{background:var(--green)}
+
+/* 6–10: lightly trimmed */
+.bd{list-style:none;margin:0;padding:0 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.05)}
+.bd li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--soft)}
+.bd li:last-child{border-bottom:0}
+.bd s{color:var(--dim);margin-right:6px;font-size:13.5px}.bd b{color:#FFFFFF}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.strip>div{padding:14px 12px;text-align:center}.strip>div+div{border-left:1px solid var(--line)}
+.strip .k{font-size:12.5px;color:var(--soft)}.strip s{display:block;margin-top:6px;font-size:12.5px;color:var(--dim)}.strip b{display:block;font-family:'Manrope WL',sans-serif;font-size:19px;font-weight:800;letter-spacing:-.02em}
+.card.two{padding:0;overflow:hidden;gap:0}
+.card.two .a{padding:32px 32px 24px;display:flex;flex-direction:column;gap:16px}
+.card.two .b{padding:20px 32px 28px;background:rgba(255,255,255,.05);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.lines{display:grid;gap:10px}
+.lines div{display:grid;grid-template-columns:20px 1fr auto;gap:10px;align-items:center;font-size:14.5px;color:var(--soft)}
+.lines svg{width:18px;height:18px;stroke:var(--green)}
+.lines b{color:#FFFFFF}.lines s{color:var(--dim);margin-right:6px;font-size:13.5px}
+.bar{display:grid;gap:8px}
+.bar div{display:grid;grid-template-columns:96px 1fr auto;gap:12px;align-items:center;font-size:13.5px;color:var(--soft)}
+.bar i{height:8px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden;display:block}
+.bar i b{display:block;height:100%;border-radius:inherit}
+.bar .full b{width:100%;background:rgba(185,195,227,.45)}.bar .cut b{width:37%;background:var(--green)}
+.bar strong{color:#FFFFFF;font-weight:600}
+.sec-title{width:100%;text-align:center;margin:24px 0 -8px;font-family:'Manrope WL',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.02em}
+.sec-title span{font-weight:300;color:#3A4566}
+</style>
+</head>
+<body>
+<header class="top"><h1>Price Card<span>Five Simplified Variations</span></h1></header>
+<main class="grid">
+
+<section class="var"><div class="vh"><small>Variation 1</small><b>Essentials only</b><p>Price, what it covers, one button, one line of urgency.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday Deal</span></div>
+  <div class="price"><span class="big">$2,999</span><span class="unit">/first year</span></div>
+  <p class="muted" style="margin:0">Onboarding and 12 months included. Then $299/mo, locked for life.</p>
+  <a class="btn" href="#">Claim My Slot →</a>
+  <p class="small" style="margin:0;text-align:center"><span class="dot"></span>Only 10 founding slots · Ends Dec 1</p>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 2</small><b>Price with chips</b><p>The long breakdown becomes three short chips.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="save">Save 63%</span></div>
+  <div class="price"><span class="big">$2,999</span><span class="was">$8,088</span></div>
+  <div class="chips"><span>Onboarding <b>$1,499</b></span><span>Year one <b>$1,500</b></span><span>Then <b>$299/mo</b></span></div>
+  <a class="btn" href="#">Claim My Slot →</a>
+  <p class="small" style="margin:0;text-align:center">10 founding slots · Ends Dec 1</p>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 3</small><b>Before and after</b><p>The saving told in one line: old price, arrow, new price.</p></div>
+<div class="stage"><div class="card">
+  <span class="badge">Black Friday Deal</span>
+  <h3>Managed Dokan, first year</h3>
+  <div class="swap"><span class="was" style="font-size:24px">$8,088</span><span class="arrow">→</span><span class="big">$2,999</span></div>
+  <p class="muted" style="margin:0">Then $299/mo, locked for life.</p>
+  <a class="btn pill" href="#">Claim My Slot →</a>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 4</small><b>Now and later</b><p>Two numbers side by side: what you pay now, and every month after.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday</span></div>
+  <div class="split"><div><div class="k">First year</div><div class="v">$2,999</div></div><div><div class="k">After year one</div><div class="v">$299<small>/mo</small></div></div></div>
+  <a class="btn" href="#">Claim My Slot →</a>
+  <p class="small" style="margin:0;text-align:center">Save 63% · 10 founding slots · Ends Dec 1</p>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 5</small><b>Centred with slots</b><p>A centred price and a bar showing the 10 founding slots.</p></div>
+<div class="stage"><div class="card center">
+  <span class="badge">Black Friday Deal</span>
+  <h3>Managed Dokan</h3>
+  <div class="price" style="justify-content:center"><span class="big">$2,999</span><span class="unit">/first year</span></div>
+  <p class="muted" style="margin:0">Then $299/mo, locked for life.</p>
+  <a class="btn pill" href="#" style="width:100%">Claim My Slot →</a>
+  <div class="slots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <p class="small" style="margin:0">10 founding slots · Ends Dec 1</p>
+</div></div></section>
+
+
+<h2 class="sec-title">Five More <span>· a little less trimmed</span></h2>
+
+<section class="var"><div class="vh"><small>Variation 6</small><b>Same card, tidier</b><p>Everything kept except repeats; the two footnotes merge into one line.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday Deal</span></div>
+  <p class="muted" style="margin:0">For marketplaces up to 500K monthly visits.</p>
+  <div class="price"><span class="big">$2,999</span><span class="unit">/first year</span><span class="was">$8,088</span><span class="save">Save 63%</span></div>
+  <a class="btn" href="#">Claim My Slot →</a>
+  <ul class="bd"><li><span>Onboarding</span><span><s>$3,900</s><b>$1,499</b></span></li><li><span>First 12 months</span><span><s>$4,188</s><b>$1,500</b></span></li><li><span>After year one</span><span><s>$349</s><b>$299/mo</b></span></li></ul>
+  <p class="small" style="margin:0">10 founding slots · Lock by Dec 1 · $299/mo locked for life</p>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 7</small><b>Breakdown as a strip</b><p>The three-row table becomes one row of three boxes.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday Deal</span></div>
+  <div class="price"><span class="big">$2,999</span><span class="unit">/first year</span><span class="was">$8,088</span><span class="save">Save 63%</span></div>
+  <p class="muted" style="margin:0">Onboarding and 12 months, billed upfront.</p>
+  <div class="strip"><div><span class="k">Onboarding</span><s>$3,900</s><b>$1,499</b></div><div><span class="k">First 12 months</span><s>$4,188</s><b>$1,500</b></div><div><span class="k">After year one</span><s>$349</s><b>$299/mo</b></div></div>
+  <a class="btn" href="#">Claim My Slot →</a>
+  <p class="small" style="margin:0;text-align:center"><span class="dot"></span>Only 10 founding slots · Ends Dec 1</p>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 8</small><b>Two-part card</b><p>Price and button on top, the breakdown in a calmer lower panel.</p></div>
+<div class="stage"><div class="card two">
+  <div class="a"><div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday Deal</span></div><div class="price"><span class="big">$2,999</span><span class="unit">/first year</span><span class="was">$8,088</span><span class="save">Save 63%</span></div><a class="btn" href="#">Claim My Slot →</a><p class="small" style="margin:0;text-align:center">Only 10 founding slots · Ends Dec 1</p></div>
+  <div class="b"><span class="small" style="font-family:'Plex WL',monospace">What you pay</span><ul class="bd" style="background:none;border:0;padding:0"><li><span>Onboarding</span><span><s>$3,900</s><b>$1,499</b></span></li><li><span>First 12 months</span><span><s>$4,188</s><b>$1,500</b></span></li><li><span>After year one</span><span><s>$349</s><b>$299/mo</b></span></li></ul></div>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 9</small><b>Ticked breakdown</b><p>The breakdown reads like a checklist with green ticks.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday Deal</span></div>
+  <div class="price"><span class="big">$2,999</span><span class="unit">/first year</span><span class="was">$8,088</span><span class="save">Save 63%</span></div>
+  <p class="muted" style="margin:0">For marketplaces up to 500K monthly visits.</p>
+  <div class="lines">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Onboarding</span><span><s>$3,900</s><b>$1,499</b></span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>First 12 months</span><span><s>$4,188</s><b>$1,500</b></span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>After year one, for life</span><span><s>$349</s><b>$299/mo</b></span></div>
+  </div>
+  <a class="btn pill" href="#">Claim My Slot →</a>
+  <p class="small" style="margin:0;text-align:center">10 founding slots · Ends Dec 1</p>
+</div></div></section>
+
+<section class="var"><div class="vh"><small>Variation 10</small><b>Saving bar</b><p>A two-bar chart shows the saving at a glance, then the short breakdown.</p></div>
+<div class="stage"><div class="card">
+  <div class="row"><h3>Managed Dokan</h3><span class="badge">Black Friday Deal</span></div>
+  <div class="price"><span class="big">$2,999</span><span class="unit">/first year</span><span class="save">Save 63%</span></div>
+  <div class="bar"><div class="full"><span>Usual price</span><i><b></b></i><strong>$8,088</strong></div><div class="cut"><span>Black Friday</span><i><b></b></i><strong>$2,999</strong></div></div>
+  <p class="muted" style="margin:0">Onboarding and 12 months included. Then $299/mo, locked for life.</p>
+  <a class="btn" href="#">Claim My Slot →</a>
+  <p class="small" style="margin:0;text-align:center"><span class="dot"></span>Only 10 founding slots · Ends Dec 1</p>
+</div></div></section>
+</main>
+</body>
+</html>
